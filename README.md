@@ -232,5 +232,209 @@ Lo que debes hacer, es ir aca cada uno de estos componentes e importar el archiv
 |Contact   |`./src/sections/contact.mdx`  |
 
 ## Crear una nueva seccion para listar tus BlogPost
+Deberas construir una nueva seccion para listar los 6 primeros blog post en el home de nuestro sitio, para ello puedes basarte en el componente `./src/components/Projects.jsx`.
 
-... WIP
+Este nuevo componente deber ir entre las secciones `About` y `Contact`
+
+```jsx
+const IndexPage = () => (
+  <Layout>
+    <Parallax pages={7}>
+      ...
+      <About offset={3} />
+
+      <PostList offset={4} />
+
+      <Contact offset={6} />
+    </Parallax>
+  </Layout>
+);
+```
+
+Puedes tomar esta lista de post como data dummy solo para tu maquetacion
+
+```js
+const data = [
+  {
+    id: 1,
+    name: 'How I built a modern website in 2021',
+    description: `For over half of 2021, I worked on a complete rewrite of kentcdodds.com. You're reading this on the rewrite of this site! Are you using dark mode or light mode? Have you signed in and selected your team yet? Have you tried to call into the Call Kent Podcast? This blog post isn't about these and other features of the new site, but how I built it. There's too much to dive deep in a single blog post. I just want to give you an overview of the technologies and libraries I used to make this experience for you.`,
+    image:
+      'https://kentcdodds.com/img/image/upload/w_2100,q_auto,f_auto,b_rgb:e6e9ee/kentcdodds.com/content/blog/how-i-built-a-modern-website-in-2021/banner_iplhop',
+    created: '2017-11-04T18:48:46.250Z',
+  },
+  {
+    id: 2,
+    name: 'How I built a modern website in 2021',
+    description: `For over half of 2021, I worked on a complete rewrite of kentcdodds.com. You're reading this on the rewrite of this site! Are you using dark mode or light mode? Have you signed in and selected your team yet? Have you tried to call into the Call Kent Podcast? This blog post isn't about these and other features of the new site, but how I built it. There's too much to dive deep in a single blog post. I just want to give you an overview of the technologies and libraries I used to make this experience for you.`,
+    image:
+      'https://kentcdodds.com/img/image/upload/w_2100,q_auto,f_auto,b_rgb:e6e9ee/kentcdodds.com/content/blog/how-i-built-a-modern-website-in-2021/banner_iplhop',
+    created: '2017-11-04T18:48:46.250Z',
+  },
+  {
+    id: 3,
+    name: 'How I built a modern website in 2021',
+    description: `For over half of 2021, I worked on a complete rewrite of kentcdodds.com. You're reading this on the rewrite of this site! Are you using dark mode or light mode? Have you signed in and selected your team yet? Have you tried to call into the Call Kent Podcast? This blog post isn't about these and other features of the new site, but how I built it. There's too much to dive deep in a single blog post. I just want to give you an overview of the technologies and libraries I used to make this experience for you.`,
+    image:
+      'https://kentcdodds.com/img/image/upload/w_2100,q_auto,f_auto,b_rgb:e6e9ee/kentcdodds.com/content/blog/how-i-built-a-modern-website-in-2021/banner_iplhop',
+    created: '2017-11-04T18:48:46.250Z',
+  },
+  {
+    id: 4,
+    name: 'How I built a modern website in 202',
+    description: `For over half of 2021, I worked on a complete rewrite of kentcdodds.com. You're reading this on the rewrite of this site! Are you using dark mode or light mode? Have you signed in and selected your team yet? Have you tried to call into the Call Kent Podcast? This blog post isn't about these and other features of the new site, but how I built it. There's too much to dive deep in a single blog post. I just want to give you an overview of the technologies and libraries I used to make this experience for you.`,
+    image:
+      'https://kentcdodds.com/img/image/upload/w_2100,q_auto,f_auto,b_rgb:e6e9ee/kentcdodds.com/content/blog/how-i-built-a-modern-website-in-2021/banner_iplhop',
+    created: '2017-11-04T18:48:46.250Z',
+  },
+];
+```
+
+## Headless CMS: Contentful
+Ahora te toca crear en contentful.com un nuevo `Content model` para crear nuestros blog post en este CMS.
+
+### Crea tu cuenta Contentful gratuita
+También necesitará una cuenta Contentful gratuita: [crear una solo](https://www.contentful.com/sign-up/) toma un momento.
+
+### Generar tokens de acceso
+Antes de pasar a la parte emocionante de configurar su sitio web, primero debe generar 2 tokens de acceso para que su sitio web basado en Contentful esté en funcionamiento mediante la obtención de datos de la API.
+
+- Content Management API
+- Content Delivery API
+
+Dirígete al menú desplegable Configuración de espacio y navega a la sección de API. Desde allí, navegue hasta la pestaña del token de API que le gustaría generar. La API de administración de contenido se utiliza para el acceso de escritura a su espacio, así que mantenga el token generado seguro y privado
+
+### Modelo y configuración de contenido
+
+Los campos que debe tener el `Content model` son:
+- [ ] Title - Text
+- [ ] Slug -  Slug
+- [ ] Image - Asset
+- [ ] Body - RichText
+
+Luego de creado esto, deberas agregar 6 entradas de este tipo.
+
+## Conectar Contentful con gatsby
+Trabajando con React y con énfasis en un rendimiento rápido, GatsbyJS es un generador de sitios estáticos prometedor que le permite conectar sus proyectos web a una variedad de API y fuentes de datos; incluida la infraestructura de contenido de Contentful.
+
+### Instalar el plugin
+Puedes seguir las instrucciones de la [documentacion oficial](https://www.gatsbyjs.com/plugins/gatsby-source-contentful/) para instlaar y configurar el plugin.
+
+```bash
+npm install gatsby-source-contentful
+```
+
+### Crear paginas programaticamente
+Vamos a crear paginas dinamicamente mediante programacion usando `node.js` y una consulta simple de graphql en contentful.
+
+Primero deberas crear el archivo `gatsby-node.js` en toda la raiz del proyecto, en este archivo será el encargado de crear las paginas dinamicamente.
+
+Aca te dejo un ejemplo de como crear una pagina, pero recuerda que debes tener previamente creado el template que servira de plantilla para crear esta pagina.
+
+```js
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions
+  const template = path.resolve('./src/templates/Post.js')
+
+  createPage({
+    path: `/posts/${element.node?.slug}`,
+    component: template,
+    context: element?.node,
+  })
+}
+```
+
+El siguiente paso sera que consultes a contentful para consultar los blogpost que creaste en pasos antetiores con el fin de que las paginas que creemos sean de acuerdo a la informacion que existe all.
+
+Este es un posible ejemplo de como seria el `query` que deberias hacer.
+
+```js
+graphql(`
+  {
+    allContentfulPosts {
+      edges {
+        node {
+          id
+          title
+          slug
+          image {
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+`)
+```
+
+Finalmente tu archivo deberia verse al parecido o similar a este fragmento de codigo:
+
+```js
+const path = require('path')
+
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions
+  const template = path.resolve('./src/templates/Post.js')
+
+  return graphql(
+    `
+      {
+        allContentfulPosts {
+          edges {
+            node {
+              id
+              title
+              slug
+              image {
+                file {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  ).then( result => {
+    result.data.allContentfulPosts.edges.forEach(element => {
+      createPage({
+        path: `/posts/${element.node?.slug}`,
+        component: template,
+        context: element?.node,
+      })
+    })
+  })
+
+}
+
+```
+
+## Actualizar la seccion para listar tus BlogPost
+Ahora que ya tenemos una conexion con contentfull dentro del proyecto, deberas hacer una consulta para obtener la informacion.
+
+Tienes dos opciones que se importan desde el paquete de `gatsby`:
+- `useStaticQuery`
+- `query`
+
+Ambas te van a servir y el query que hicimos en el paso anterior podrias utilizarlo tambien en este.
+
+Luego de que tengas la data, recuerda pintar los datos usando un `.map`
+
+```jsx
+{posts.map(({ node }) => {
+  return (
+    <Link to={`/post/${node.slug}`} key={node.slug}>
+      <h2> {node.title} </h2>
+      <img src={node.image} alt={i.name} />
+    </Link>
+  )
+})}
+```
+
+Si realizaste todos los pasos previos correctamente, podrias hacer clic en cada una de las tarjetas de los blog post e irias al detalle del mismo en una nueva pagina.
+
+## 🚀 Despliegue
+Por ultimo, la invitacion es para que despliegues este proyecto en netlify o vercel.
+
