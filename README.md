@@ -1,6 +1,8 @@
 # Workshop Gatsby.js - Portafolio
 > Crea un portafolio para tu perfil con Gatsby
 
+<img src="./static/developer_blog_1000_2x.png">
+
 ## Reto
 Como desarrollador, su GitHub es un gran paso adelante de una lista de viñetas de palabras de moda en un currículum. Sin embargo, sus repositorios por sí solos no dan mucho espacio para proporcionar un contexto adicional sobre los otros aspectos del desarrollo web. Su tarea es utilizar Gatsby para crear un sitio tipo portafolio que presente sus proyectos de Github mas importantes. Hágalo rentable y accesible desde el primer momento, agregue soporte de SEO para que los empleadores potenciales puedan encontrarlo con una búsqueda rápida.
 
@@ -17,6 +19,8 @@ Puede crear este sitio usando MDX, o estirarse un poco confiando en componentes 
 
 ### Crear proyecto en tu github
 Usar esta plantilla base para crear tu proyecto, para ello ve al boton verde en la parte superiror derecha donde dice `use this template`.
+
+<img src="./static/01.png">
 
 Luego debes clonar el repositorio desde tu cuenta e instalar las dependencias
 
@@ -234,6 +238,9 @@ Lo que debes hacer, es ir aca cada uno de estos componentes e importar el archiv
 ## Crear una nueva seccion para listar tus BlogPost
 Deberas construir una nueva seccion para listar los 6 primeros blog post en el home de nuestro sitio, para ello puedes basarte en el componente `./src/components/Projects.jsx`.
 
+Este es un ejemplo para ayudar a inspiarte
+<img src="./static/02.png">
+
 Este nuevo componente deber ir entre las secciones `About` y `Contact`
 
 ```jsx
@@ -438,3 +445,6 @@ Si realizaste todos los pasos previos correctamente, podrias hacer clic en cada 
 ## 🚀 Despliegue
 Por ultimo, la invitacion es para que despliegues este proyecto en netlify o vercel.
 
+## Captura final
+
+<img src="./static/final.gif">
