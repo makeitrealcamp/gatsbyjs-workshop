@@ -27,7 +27,7 @@ Luego debes clonar el repositorio desde tu cuenta e instalar las dependencias
 ```bash
 git clone <url>
 cd workshop-gatsby
-npm insall
+npm install
 ```
 
 ## Cree un componente de SEO accesible usando React Helmet
