@@ -1,6 +1,7 @@
 import React from 'react';
 import { Global } from '@emotion/react';
-import { css, Themed } from 'theme-ui';
+import { css } from 'theme-ui';
+import { Themed } from '@theme-ui/mdx';
 
 // import Seo
 

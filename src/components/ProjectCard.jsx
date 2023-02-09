@@ -32,7 +32,7 @@ const ProjectCard = ({ link, title, children, bg }) => (
         textTransform: `uppercase`,
         letterSpacing: `wide`,
         pt: 4,
-        fontSize: [4, 5],
+        fontSize: ['xs', 'sm'],
         fontWeight: `medium`,
         lineHeight: 1,
       }}

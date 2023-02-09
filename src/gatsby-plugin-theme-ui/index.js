@@ -1,4 +1,4 @@
-import { tailwind } from "@theme-ui/presets"
+import { tailwind } from '@theme-ui/presets';
 
 export default {
   ...tailwind,
@@ -40,44 +40,17 @@ export default {
   breakpoints: [`400px`, `600px`, `900px`, `1200px`, `1600px`],
   sizes: {
     ...tailwind.sizes,
-    "1/2": `50%`,
-    "1/3": `33.333333%`,
-    "2/3": `66.666667%`,
-    "1/4": `25%`,
-    "2/4": `50%`,
-    "3/4": `75%`,
-    "1/5": `20%`,
-    "2/5": `40%`,
-    "3/5": `60%`,
-    "4/5": `80%`,
-    "1/6": `16.666667%`,
-    "2/6": `33.333333%`,
-    "3/6": `50%`,
-    "4/6": `66.666667%`,
-    "5/6": `83.333333%`,
-    "1/12": `8.333333%`,
-    "2/12": `16.666667%`,
-    "3/12": `25%`,
-    "4/12": `33.333333%`,
-    "5/12": `41.666667%`,
-    "6/12": `50%`,
-    "7/12": `58.333333%`,
-    "8/12": `66.666667%`,
-    "9/12": `75%`,
-    "10/12": `83.333333%`,
-    "11/12": `91.666667%`,
-    full: `100%`,
-    screen: `100vw`,
   },
   styles: {
     ...tailwind.styles,
     root: {
       ...tailwind.styles.root,
       color: `text`,
+      fontSize: ['lg', 'xl', '2xl'],
       backgroundColor: `background`,
       a: {
         transition: `all 0.3s ease-in-out`,
-        "&:hover": {
+        '&:hover': {
           color: `primary`,
           textDecoration: `none`,
         },
@@ -96,24 +69,24 @@ export default {
       maxWidth: `5xl`,
     },
     p: {
-      fontSize: [1, 2],
+      fontSize: ['lg', 'xl', '2xl'],
       letterSpacing: `-0.003em`,
       lineHeight: `body`,
-      "--baseline-multiplier": 0.179,
-      "--x-height-multiplier": 0.35,
+      '--baseline-multiplier': 0.179,
+      '--x-height-multiplier': 0.35,
       color: `text`,
     },
     blockquote: {
       marginLeft: 0,
       p: {
-        fontSize: [2, 3],
+        fontSize: ['lg', 'xl', '2xl'],
         fontWeight: `medium`,
         color: `heading`,
       },
     },
     h1: {
       ...tailwind.styles.h1,
-      fontSize: [6, 7, 8],
+      fontSize: ['5xl', '6xl', '7xl'],
       mt: 2,
       mb: 4,
       textShadow: `rgba(255, 255, 255, 0.15) 0px 5px 35px`,
@@ -122,24 +95,24 @@ export default {
     },
     h2: {
       ...tailwind.styles.h2,
-      fontSize: [4, 5, 6],
+      fontSize: ['4xl', '5xl', '6xl'],
       mt: 2,
       color: `heading`,
     },
     h3: {
       ...tailwind.styles.h3,
-      fontSize: [3, 4, 5],
+      fontSize: ['3xl', '4xl', '5xl'],
       mt: 3,
       color: `heading`,
     },
     h4: {
       ...tailwind.styles.h4,
-      fontSize: [2, 3, 4],
+      fontSize: ['2xl', '3xl', '4xl'],
       color: `heading`,
     },
     h5: {
       ...tailwind.styles.h5,
-      fontSize: [1, 2, 3],
+      fontSize: 2,
       color: `heading`,
     },
     h6: {
@@ -161,11 +134,4 @@ export default {
       ml: 3,
     },
   },
-  texts: {
-    bigger: {
-      p: {
-        fontSize: [2, 3, 4],
-      },
-    },
-  },
-}
+};

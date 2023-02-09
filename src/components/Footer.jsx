@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
-import { Themed, Flex, useColorMode } from 'theme-ui';
+import { Flex, useColorMode } from 'theme-ui';
+import { Themed } from '@theme-ui/mdx';
 
 const Footer = () => {
   const [colorMode, setColorMode] = useColorMode();
